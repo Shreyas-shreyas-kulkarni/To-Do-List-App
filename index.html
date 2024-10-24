@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+</head>
+
+<body>
+
+    <center>
+        <div class="containar">
+            <center>
+
+
+                <!-- <h1>To Do List</h1> -->
+                <nav>
+
+                    <h1>
+                        <div id="currentDate"></div>
+                    </h1>
+                    <center>
+                        <h1 class="title">TO Do List</h1>
+                    </center>
+                    <img src="landscape.jpg" class="landscape">
+                </nav>
+
+                <h1><span id="date"></span></h1>
+            </center>
+
+            <center><input type="text" id="taskInput" placeholder="Add a Task"></center>
+
+            <center><input type="submit" value="ADD" onclick="addTask()" id="taskInput" class="btn" style="
+        /* background-color: gray; */
+        background-image: linear-gradient(purple,blue);
+        font-size: 30px;
+        margin-top: 6px;
+        margin-bottom: 10px;
+        color: white;
+        border-radius: 30px;
+        box-shadow: 1px 0.1px 5px 1px purple;
+        cursor: pointer;"></center>
+            <div class="list-for-overflow" style="z-index: 2;">
+                <center>
+
+                    <ul id="taskList">
+
+
+                    </ul>
+                </center>
+            </div>
+        </div>
+    </center>
+
+    <center>
+        <div class="note" style="background-color: whitesmoke;">
+            <ul style="background-color: whitesmoke;">
+                <center>
+                    <li style="background-color: whitesmoke; font-size: 20px;">
+                        <h1>NOTE :</h1>
+                    </li>
+                </center>
+                <li style="background-color: whitesmoke; font-size: 20px;"># Write your day today's work</li>
+                <li style="background-color: whitesmoke; font-size: 20px;"># Keep your work organised</li>
+                <li style="background-color: whitesmoke; font-size: 20px;"># Maintain daily routin</li>
+                <li style="background-color: whitesmoke; font-size: 20px;"># Maintain time</li>
+                <li style="background-color: whitesmoke; font-size: 20px;"># Work presistently</li>
+                <li style="background-color: whitesmoke; font-size: 20px;"># Work smart by organising time</li>
+            </ul>
+        </div>
+    </center>
+
+    <script>
+        function displayDate() {
+            const dateElement = document.getElementById("currentDate");
+            const today = new Date(); // Get the current date
+
+            // Format the date (e.g., "October 22, 2024")
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = today.toLocaleDateString('en-US', options);
+
+            // Set the formatted date in the placeholder
+            dateElement.textContent = formattedDate;
+        }
+
+        // Call the function to display the date
+        displayDate();
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+</body>
+
+</html>
